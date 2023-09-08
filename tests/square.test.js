@@ -1,9 +1,10 @@
-const { Renderer } = require("../lib/Renderer.js");
 const { Square } = require("../lib/square.js");
 
 test('render square', () => {
-    const r = new Renderer(400, 300);
-    const square = new Square(r, "#FFF", 50, 80);
-    const renderedsquare = square.render();
-    expect(renderedsquare).toMatchSnapshot();
+    const expectedSVG = `<svg width="300" height="200">
+    <rect x="150" y="100" width="180" height="180" fill="black"/>
+    <text x="150" y="100" fill="red">SVG</text>
+    </svg>`
+
+    expect(Square.render()).toBe(expectedSVG);
 })

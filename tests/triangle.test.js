@@ -1,9 +1,10 @@
-const { Renderer } = require("../lib/Renderer.js");
 const { Triangle } = require("../lib/triangle.js");
 
 test('render triangle', () => {
-    const r = new Renderer(400, 300);
-    const triangle = new Triangle(r, "#FFF", 50, 80);
-    const renderedtriangle = triangle.render();
-    expect(renderedtriangle).toMatchSnapshot();
+    const expectedSVG = `<svg width="300" height="200">
+    <polygon points="60,10 240,10 150,190" fill="black"/>
+    <text x="150" y="100" fill="red">SVG</text>
+    </svg>`
+
+    expect(Triangle.render()).toBe(expectedSVG);
 })
